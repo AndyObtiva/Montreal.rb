@@ -5,7 +5,7 @@
       Posted <%= time_ago_in_words(news_item.published_at) %> ago
     </p>
     <div class="post-body">
-      <%= raw news_item.body %>
+      <%= render_markdown_as_html news_item.body %>
     </div>
   </div>
 <% end %>
