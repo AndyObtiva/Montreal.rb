@@ -26,7 +26,6 @@ gem 'turbolinks'
 
 # View
 gem 'simple_form'
-gem 'enumerize'
 gem 'redcarpet'
 
 # Server
@@ -65,4 +64,3 @@ group :development, :test do
 end
 
 gem 'coveralls', require: false, group: :test
-

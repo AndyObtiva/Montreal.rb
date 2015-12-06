@@ -1,6 +1,5 @@
 class Job < ActiveRecord::Base
-  extend Enumerize
-  STATUSES = [:draft, :published, :archived]
-  enumerize :state, in: STATUSES
+  STATES = [:draft, :published, :archived]
+  enum state: STATES
   belongs_to :organization
 end
