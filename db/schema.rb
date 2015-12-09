@@ -11,17 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204172708) do
+ActiveRecord::Schema.define(version: 20151207231113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "event_translations", force: :cascade do |t|
     t.integer  "event_id",     null: false
     t.string   "locale",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "title",        null: false
     t.text     "introduction"
     t.text     "conclusion"
@@ -41,19 +40,19 @@ ActiveRecord::Schema.define(version: 20151204172708) do
   add_index "events", ["starts_at"], name: "index_events_on_starts_at", using: :btree
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "state"
+    t.integer  "state",           default: 0, null: false
     t.string   "title"
     t.text     "description"
     t.integer  "organization_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "location_translations", force: :cascade do |t|
     t.integer  "location_id", null: false
     t.string   "locale",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.text     "description"
     t.text     "directions"
   end
@@ -70,19 +69,19 @@ ActiveRecord::Schema.define(version: 20151204172708) do
   end
 
   create_table "news_items", force: :cascade do |t|
-    t.string   "state"
+    t.integer  "state",        default: 0, null: false
     t.datetime "published_at"
     t.text     "body"
     t.string   "title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "organization_translations", force: :cascade do |t|
     t.integer  "organization_id", null: false
     t.string   "locale",          null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.text     "description"
   end
 
@@ -110,9 +109,9 @@ ActiveRecord::Schema.define(version: 20151204172708) do
   add_index "page_translations", ["page_id"], name: "index_page_translations_on_page_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "state",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "state",      default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
